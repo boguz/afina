@@ -1,0 +1,64 @@
+.settings__title {
+    color: var(--color-accentOne);
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: .25rem;
+}
+
+.settings__title:first-of-type {
+    margin-top: 0;
+}
+
+.settings__input-unit {
+    position: relative;
+    margin-left: .5rem;
+    margin-bottom: .25rem;
+}
+
+.settings__radio {
+    visibility: hidden;
+}
+
+.settings__label {
+    color: white;
+    opacity: .75;
+    font-weight: 400;
+    margin-left: .5rem;
+    font-size: .875rem;
+}
+
+.settings__label:before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border: 2px solid var(--color-accentTwo);
+    border-radius: 50%;
+}
+
+.settings__label:after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 4px;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-accentTwo);
+    border-radius: 50%;
+    transform: scale(0, 0);
+}
+
+.settings__radio:checked ~ .settings__label {
+    opacity: 1;
+}
+
+.settings__radio:checked ~ .settings__label:before {
+    border-color: var(--color-accentTwo);
+}
+
+.settings__radio:checked ~ .settings__label:after {
+    transform: scale(1, 1);
+}

@@ -1,0 +1,26 @@
+.duration-bar__container {
+    position: fixed;
+    width: 100%;
+    height: .5rem;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-bg);
+}
+
+.duration-bar__bar {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--color-accentOne);
+}
+
+.duration-bar__bar--active {
+    animation: durationBarAnimation infinite var(--duration-bar-speed) linear;
+}
+
+@keyframes durationBarAnimation {
+    0% { width: 0% }
+    100% { width: 100% }
+}

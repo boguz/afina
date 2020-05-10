@@ -1,0 +1,29 @@
+body[theme='Minimal'] {
+    --color-bg: #e2e2e2;
+    --color-accentOne: #272727;
+    --color-accentTwo: var(--color-accentOne);
+}
+
+body[theme='Minimal'] .button--instrument {
+    color: var(--color-accentTwo);
+    border-color: var(--color-accentTwo);
+}
+
+body[theme='Minimal'] .button--instrument.button--active,
+body[theme='Minimal'] .button--note {
+    color: var(--color-bg);
+}
+
+body[theme='Minimal'] .settings__label {
+    color: var(--color-accentTwo);
+}
+
+body[theme='Minimal'] .header__icon {
+    background-color: var(--color-accentTwo);
+    opacity: .5;
+}
+
+body[theme='Minimal'] .header__icon:hover {
+    background-color: var(--color-accentTwo);
+    opacity: .75;
+}

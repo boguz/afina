@@ -1,0 +1,56 @@
+body[theme='Neumorph'] {
+    --color-bg: #283033;
+    --color-accentOne: #ff7b6e;
+    --color-accentTwo: #FF7B6E7D;
+}
+
+body[theme='Neumorph'] .button--instrument {
+    color: var(--color-accentTwo);
+    background: linear-gradient(145deg, #202a2d, #2e3a3e);
+    box-shadow:  6px 6px 10px rgba(0, 0, 0, 0.175), -6px -6px 10px rgba(255, 255, 255, 0.04);
+    border: none;
+    border-radius: 3.5rem;
+    font-size: 0.75rem;
+}
+
+body[theme='Neumorph'] .button--instrument.button--active {
+    background: linear-gradient(145deg, #202a2d, #2e3a3e);
+    box-shadow:  inset 6px 6px 10px rgba(0, 0, 0, 0.175), inset -6px -6px 10px rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--color-accentTwo);
+    color: var(--color-accentOne);
+}
+
+body[theme='Neumorph'] .button--note {
+    color: var(--color-accentTwo);
+    background: linear-gradient(145deg, #202a2d, #2e3a3e);
+    box-shadow:  6px 6px 10px rgba(0, 0, 0, 0.175), -6px -6px 10px rgba(255, 255, 255, 0.04);
+    border: none;
+    border-radius: 3.5rem;
+    font-size: 0.75rem;
+}
+
+body[theme='Neumorph'] .button--note.button--active {
+    color: var(--color-accentOne);
+    border: 1px solid var(--color-accentTwo);
+}
+
+body[theme='Neumorph'] .button--instrument:hover,
+body[theme='Neumorph'] .button--note:hover {
+    border: 1px solid var(--color-accentTwo);
+}
+
+body[theme='Neumorph'] .duration-bar__container,
+body[theme='Neumorph'] .duration-bar__bar {
+    height: 4px;
+}
+
+body[theme='Neumorph'] .settings__title {
+    font-size: .875rem;
+    color: var(--color-accentOne);
+    opacity: .875;
+}
+
+body[theme='Neumorph'] .settings__label {
+    font-size: .8rem;
+    opacity: .75;
+}

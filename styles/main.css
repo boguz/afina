@@ -1,0 +1,68 @@
+body {
+    background-color: var(--color-bg);
+    padding: 1rem;
+}
+
+.button {
+    color: white;
+    border-radius: 2px;
+    font-size: 20px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.button--instrument {
+    height: 3rem;
+    width: 100%;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-accentOne);
+    font-size: 1.125rem;
+}
+
+.button--instrument:first-of-type {
+    margin-bottom: .5rem;
+}
+
+.button--instrument.button--active {
+    background-color: var(--color-accentOne);
+}
+
+.button--instrument:not(.button--active):hover {
+    opacity: .75;
+    cursor: pointer;
+}
+
+.notes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: .5rem;
+    margin: 1rem auto 0;
+}
+
+.button--note {
+    background-color: var(--color-accentTwo);
+    height: 3rem;
+    width: 3rem;
+}
+
+.button--note:hover {
+    opacity: .875;
+    cursor: pointer;
+}
+
+.button--note.button--active {
+    background-color: var(--color-accentOne);
+}
+
+.notes:not(.notes--visible) {
+    display: none;
+}
+
+.notes--ukulele {
+    grid-template-columns: 1fr 1fr;
+    width: 6.5rem;
+}

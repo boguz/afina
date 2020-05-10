@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Afina</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+
+    <link rel="stylesheet" href="./styles/afina.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header__container">
+        <i id="settingsButton" class="header__icon header__icon--settings"></i>
+        <i id="backButton" class="header__icon header__icon--back"></i>
+        <i id="closeButton" class="header__icon header__icon--close"></i>
+    </header>
+    <main>
+        <div id="tunerViewContainer">
+            <section class="buttons">
+                <div class="button button--instrument" data-instrument="guitar">guitar</div>
+                <div class="button button--instrument" data-instrument="ukulele">ukulele</div>
+            </section>
+
+            <section class="notes notes--guitar notes--visible">
+                <div class="button button--note" string="6">E</div>
+                <div class="button button--note" string="5">A</div>
+                <div class="button button--note" string="4">D</div>
+                <div class="button button--note" string="3">G</div>
+                <div class="button button--note" string="2">B</div>
+                <div class="button button--note" string="1">E</div>
+            </section>
+
+            <section class="notes notes--ukulele">
+                <div class="button button--note" string="4">G</div>
+                <div class="button button--note" string="3">C</div>
+                <div class="button button--note" string="2">E</div>
+                <div class="button button--note" string="1">A</div>
+            </section>
+        </div>
+
+        <div id="settingsViewContainer">
+            <h3 class="settings__title">Theme</h3>
+            <div class="settings__input-unit">
+                <input class="settings__radio" type="radio" id="themeNeumorph" name="theme" value="Neumorph">
+                <label class="settings__label" for="themeNeumorph">Neumorph</label>
+            </div>
+            <div class="settings__input-unit">
+                <input class="settings__radio" type="radio" id="themeDefault" name="theme" value="Graphite">
+                <label class="settings__label" for="themeDefault">Graphite</label>
+            </div>
+            <div class="settings__input-unit">
+                <input class="settings__radio" type="radio" id="themeMinimal" name="theme" value="Minimal">
+                <label class="settings__label" for="themeMinimal">Minimal</label>
+            </div>
+
+            <h3 class="settings__title">Speed</h3>
+            <div class="settings__input-unit">
+                <input class="settings__radio" type="radio" id="speedSlow" name="speed" value="slow">
+                <label class="settings__label" for="speedSlow">Slow</label>
+            </div>
+            <div class="settings__input-unit">
+                <input class="settings__radio" type="radio" id="speedNormal" name="speed" value="normal">
+                <label class="settings__label" for="speedNormal">Normal</label>
+            </div>
+            <div class="settings__input-unit">
+                <input class="settings__radio" type="radio" id="speedFast" name="speed" value="fast">
+                <label class="settings__label" for="speedFast">Fast</label>
+            </div>
+        </div>
+    </main>
+
+    <section class="duration-bar__container">
+        <div class="duration-bar__bar"></div>
+    </section>
+
+    <script src="js/afina.js"></script>
+</body>
+</html>

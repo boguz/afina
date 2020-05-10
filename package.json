@@ -1,0 +1,33 @@
+{
+  "name": "Afina",
+  "version": "0.0.1",
+  "description": "A small instrument tuner app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "electron-builder",
+    "clear:build": "if [ -d \"build\" ]; then rm -r build; fi; mkdir build",
+    "copy:icon": "cp -f ./images/icon.icns build/",
+    "make": "npm run clear:build && npm run copy:icon && npm run dist"
+  },
+  "build": {
+    "appId": "com.boguz",
+    "productName": "Afina"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boguz/afina.git"
+  },
+  "author": "Luis Pato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/boguz/afina/issues"
+  },
+  "homepage": "https://github.com/boguz/afina#readme",
+  "devDependencies": {
+    "electron": "^8.2.5",
+    "electron-builder": "^22.6.0"
+  },
+  "dependencies": {}
+}

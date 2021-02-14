@@ -6,7 +6,9 @@ require('./js/instrumentButtons');
 require('./js/noteButtons');
 require('./js/closeButton');
 
-////// UPDATE
+/**
+ * Update UI by updating the header and the view components
+ */
 function update() {
   updateHeader();
   updateView();

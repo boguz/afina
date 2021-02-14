@@ -1,39 +1,57 @@
 let store = require('./store');
 
-////// NOTE BUTTONS
-const guitar_1 = new Audio('./sounds/guitar-E3.m4a');
-const guitar_2 = new Audio('./sounds/guitar-B2.m4a');
-const guitar_3 = new Audio('./sounds/guitar-G2.m4a');
-const guitar_4 = new Audio('./sounds/guitar-D2.m4a');
-const guitar_5 = new Audio('./sounds/guitar-A1.m4a');
-const guitar_6 = new Audio('./sounds/guitar-E1.m4a');
-const guitarSamples = [guitar_1, guitar_2, guitar_3, guitar_4, guitar_5, guitar_6];
+// Get guitar and ukulele samples
+const { guitarSamples, ukuleleSamples } = require('./samples');
 
-const ukulele_1 = new Audio('./sounds/ukulele-A3.m4a');
-const ukulele_2 = new Audio('./sounds/ukulele-E3.m4a');
-const ukulele_3 = new Audio('./sounds/ukulele-C3.m4a');
-const ukulele_4 = new Audio('./sounds/ukulele-G3.m4a');
-const ukuleleSamples = [ukulele_1, ukulele_2, ukulele_3, ukulele_4]
-
+// Initialized player variables
 let currentSample = null;
 let sampleLooper;
 
-const noteButtons = document.querySelectorAll('.button--note');
+// Note buttons
+const guitarNoteButtons = document.querySelectorAll('.notes--guitar .button--note');
+const ukuleleNoteButtons = document.querySelectorAll('.notes--ukulele .button--note');
+const noteButtons = [...guitarNoteButtons, ...ukuleleNoteButtons];
 noteButtons.forEach(noteButton => noteButton.addEventListener('click', handleNoteButtonClick));
 
+let currentButton = null;
+let samplePlaying = false;
+
+/**
+ * Add keydown event to listen for space click
+ */
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'Space' && samplePlaying) {
+    handleSpaceClick();
+  }
+});
+
+/**
+ * Handle click on a note button
+ *  - toggle active button classes
+ *  - play / stop sample
+ *  - set 'samplePlaying' variable value
+ * @param event
+ */
 function handleNoteButtonClick(event) {
-  const currentButton = document.querySelector('.button--note.button--active');
+  currentButton = document.querySelector('.button--note.button--active');
 
   toggleActiveNoteButton(event.target, currentButton);
 
   if (event.target.classList.contains('button--active')) {
     const activeInstrumentSamples = store.instrument === 'guitar' ? guitarSamples : ukuleleSamples;
     playSample(activeInstrumentSamples[parseInt(event.target.getAttribute('string')) - 1]);
+    samplePlaying = true;
   } else {
     stopSample();
+    samplePlaying = false;
   }
 }
 
+/**
+ * Toggle classes on the note buttons to show the correct active button
+ * @param target
+ * @param currentButton
+ */
 function toggleActiveNoteButton(target, currentButton) {
   if (target === currentButton) {
     currentButton.classList.remove('button--active');
@@ -43,6 +61,10 @@ function toggleActiveNoteButton(target, currentButton) {
   target.classList.add('button--active');
 }
 
+/**
+ * Stop and reset sample
+ * Reset the duration bar
+ */
 function stopSample() {
   if (currentSample) {
     currentSample.pause();
@@ -51,6 +73,12 @@ function stopSample() {
     stopDurationBar();
   }
 }
+
+/**
+ * Play a sample
+ * Start duration bar animation
+ * @param sample
+ */
 
 function playSample(sample) {
   if (currentSample) {
@@ -64,12 +92,20 @@ function playSample(sample) {
   animateDurationBar();
 }
 
+/**
+ * Loop a sample, so the sample repeats
+ * @returns {number}
+ */
 function loopSample() {
   return window.setInterval(function(){
     playSample(currentSample);
   }, store.speed);
 }
 
+/**
+ * Set the 'duration-bar-speed' custom css variable,
+ * so we animate the duration bar with correct speed
+ */
 function animateDurationBar() {
     document.documentElement.style.setProperty('--duration-bar-speed', `${store.speed}ms`);
   setTimeout(() => {
@@ -77,8 +113,27 @@ function animateDurationBar() {
   });
 }
 
+/**
+ * Stop the duration bar animation
+ */
 function stopDurationBar() {
   document.querySelector('.duration-bar__bar').classList.remove('duration-bar__bar--active');
+}
+
+/**
+ * Handle click on spacebar
+ * When spacebar is clicked we should play the next sample on the instrument
+ * (if we are on the last sample, we should loop back to the first sample)
+ */
+function handleSpaceClick() {
+  const activeNoteButtons = store.instrument === 'guitar' ? [...guitarNoteButtons] : [...ukuleleNoteButtons];
+  const activeButton = document.querySelector('.button--note.button--active');
+  const activeIndex = activeNoteButtons.indexOf(activeButton);
+  if (activeIndex < activeNoteButtons.length - 1) {
+    activeNoteButtons[activeIndex + 1].click();
+  } else if (activeIndex === activeNoteButtons.length - 1) {
+    activeNoteButtons[0].click();
+  }
 }
 
 module.exports = stopSample;

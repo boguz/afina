@@ -1,5 +1,6 @@
 const { updateLocalStorage, getLocalStorage } = require('./localStorage');
 
+// Store with setters and getter
 let store = {
   isSettings: false,
 
@@ -27,6 +28,9 @@ let store = {
   }
 };
 
+/**
+ * Set initial store values
+ */
 function setInitialStore() {
   store.theme =  getLocalStorage('theme') || 'Neumorph';
   store.instrument = getLocalStorage('instrument') || 'guitar'

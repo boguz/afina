@@ -66,7 +66,7 @@ function setupMainWindow() {
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 
   // Position app window centered just below app tray icon
   positionWindow(tray.getBounds());

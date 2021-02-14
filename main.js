@@ -13,7 +13,7 @@ function createWindow () {
 
   setTimeout(() => {
     mainWindow.show();
-  }, 1000);
+  }, 750);
 }
 
 // This method will be called when Electron has finished

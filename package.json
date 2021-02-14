@@ -1,7 +1,7 @@
 {
   "name": "Afina",
-  "version": "0.0.1",
-  "description": "A small instrument tuner app",
+  "version": "1.0.0",
+  "description": "An small instrument tuner app for guitar and ukulele on OSX",
   "main": "main.js",
   "scripts": {
     "start": "electron .",

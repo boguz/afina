@@ -10,6 +10,10 @@ function createWindow () {
 
   // setup main window
   setupMainWindow();
+
+  setTimeout(() => {
+    mainWindow.show();
+  }, 1000);
 }
 
 // This method will be called when Electron has finished
@@ -49,7 +53,8 @@ function setupMainWindow() {
     width: 196,
     height: 296,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      enableRemoteModule: true
     },
     frame: false,
     resizable: false,
@@ -61,11 +66,10 @@ function setupMainWindow() {
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Position app window centered just below app tray icon
   positionWindow(tray.getBounds());
-
 }
 
 function setupTray() {
@@ -73,8 +77,7 @@ function setupTray() {
   const nImage = nativeImage.createFromPath(trayIconPath);
   tray = new Tray(nImage);
 
-
-  tray.setToolTip('Tuner App!');
+  tray.setToolTip('Afina: Tuner App!');
   tray.setIgnoreDoubleClickEvents(true);
   tray.on('click', openWindow);
 }

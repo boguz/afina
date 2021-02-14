@@ -20,7 +20,7 @@ let samplePlaying = false;
  * Add keydown event to listen for space click
  */
 document.addEventListener('keydown', (event) => {
-  if (event.code === 'Space' && samplePlaying) {
+  if (event.code === 'Space') {
     handleSpaceClick();
   }
 });
@@ -122,16 +122,17 @@ function stopDurationBar() {
 
 /**
  * Handle click on spacebar
- * When spacebar is clicked we should play the next sample on the instrument
- * (if we are on the last sample, we should loop back to the first sample)
+ *  - if no sample playing: play first sample
+ *  - if sample playing: play next sample
+ *  - if sample playing is the last in instrument: play again the first sample
  */
 function handleSpaceClick() {
   const activeNoteButtons = store.instrument === 'guitar' ? [...guitarNoteButtons] : [...ukuleleNoteButtons];
   const activeButton = document.querySelector('.button--note.button--active');
   const activeIndex = activeNoteButtons.indexOf(activeButton);
-  if (activeIndex < activeNoteButtons.length - 1) {
+  if (samplePlaying && activeIndex < activeNoteButtons.length - 1) {
     activeNoteButtons[activeIndex + 1].click();
-  } else if (activeIndex === activeNoteButtons.length - 1) {
+  } else if (!samplePlaying || activeIndex === activeNoteButtons.length - 1) {
     activeNoteButtons[0].click();
   }
 }

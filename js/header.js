@@ -1,4 +1,6 @@
 let store = require('./store');
+const stopSample = require('./noteButtons');
+
 
 // Get elements
 const settingsButton = document.querySelector('#settingsButton');
@@ -6,19 +8,21 @@ const backButton = document.querySelector('#backButton');
 
 /**
  * Add click listener to the settings button.
- * Go to the settings view
+ * Go to the settings view, stop playing sample, update view
  */
 settingsButton.addEventListener('click', () => {
   store.isSettings = true;
+  stopSample();
   update();
 })
 
 /**
  * Add click listener to the back button.
- * Go back to the 'normal' view
+ * Go back to the 'normal' view, stop playing sample, update view
  */
 backButton.addEventListener('click', () => {
   store.isSettings = false;
+  stopSample();
   update();
 })
 

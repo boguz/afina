@@ -18,11 +18,10 @@ settingsButton.addEventListener('click', () => {
 
 /**
  * Add click listener to the back button.
- * Go back to the 'normal' view, stop playing sample, update view
+ * Go back to the 'normal' view update view
  */
 backButton.addEventListener('click', () => {
   store.isSettings = false;
-  stopSample();
   update();
 })
 
